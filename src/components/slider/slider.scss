@@ -3,7 +3,9 @@
   height: 90vh;
   position: relative;
   overflow: hidden;
-  background-color: var(--color-dark);
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4yaOxRy-JVPGwUrOjbUoG4KT5CuYbH6N3PQ&usqp=CAU");
+  background-repeat: no-repeat;
+  background-size: cover;
 
   &__btn {
     padding: 8px 20px;
@@ -100,7 +102,7 @@
 }
 
 .arrow {
-  border: 2px solid orangered;
+  border: 2px solid rgb(226, 67, 9);
   border-radius: 50%;
   background: transparent;
   color: #fff;
@@ -119,17 +121,38 @@
 
 .next {
   right: 1.5rem;
-  color: orangered;
+  color: rgb(249, 4, 4);
 }
 .prev {
   left: 1.5rem;
-  color: orangered;
+  color: rgb(249, 4, 4);
 }
 
 hr {
   height: 2px;
   background: #fff;
   width: 50%;
+}
+
+.container__dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid #f1f1f1;
+  margin: 0 5px;
+  background: #f1f1f1;
+}
+
+.dot.active {
+  background: rgb(249, 4, 4);
 }
 
 @media screen and (max-width: 992px) {

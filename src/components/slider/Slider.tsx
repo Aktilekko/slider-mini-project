@@ -9,7 +9,7 @@ const Slider = () => {
   const slideLength = sliderData.length;
 
   const autoSroll = true;
-  let slideInterval;
+  let slideInterval: any;
   let intervalTime = 5000;
 
   const nextSlide = () => {
@@ -31,6 +31,10 @@ const Slider = () => {
   useEffect(() => {
     return () => clearInterval(slideInterval);
   }, [slideInterval, autoSroll]);
+
+  const moveDot = (index: number) => {
+    setCurrentSlide(index);
+  };
 
   return (
     <div className="slider">
@@ -59,6 +63,16 @@ const Slider = () => {
           </div>
         );
       })}
+
+      <div className="container__dots">
+        {Array.from({ length: 4 }).map((item, index) => (
+          <div
+            key={index}
+            onClick={() => moveDot(index)}
+            className={currentSlide === index ? "dot active" : "dot"}
+          ></div>
+        ))}
+      </div>
     </div>
   );
 };

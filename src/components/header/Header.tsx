@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./header.scss";
 import { RiShoppingCartFill, RiMenu3Fill } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
@@ -19,6 +19,12 @@ const nav__links = [
 ];
 
 const Header = () => {
+  const menuRef = useRef<HTMLElement>(null);
+
+  const menuToggle = () => {
+    menuRef.current?.classList.toggle("active__menu");
+  };
+
   return (
     <header className="header">
       <div className="container header__container">
@@ -31,17 +37,23 @@ const Header = () => {
           </h1>
         </div>
 
-        <nav className="navbar">
+        <nav className="navbar" ref={menuRef} onClick={menuToggle}>
           <ul className="navbar__menu">
             {nav__links.map((item, index) => (
-              <NavLink to={item.path} key={index}>
+              <NavLink
+                to={item.path}
+                key={index}
+                className={(navClass) =>
+                  navClass.isActive ? "navbar__active" : ""
+                }
+              >
                 {item.display}
               </NavLink>
             ))}
           </ul>
         </nav>
 
-        <button className="navbar__menu-toggle">
+        <button className="navbar__menu-toggle" onClick={menuToggle}>
           <RiMenu3Fill />
         </button>
       </div>
